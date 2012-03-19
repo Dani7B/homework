@@ -64,5 +64,5 @@ var cons = function(funzioni) {
 			result[i] = (funzioni[i](x));
 		}
 		return result;
-	}
+	};
 }
