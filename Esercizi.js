@@ -24,3 +24,24 @@ var sumPositiveArray = function(array) {
 
 
 window.f1 // da window possiamo vedere f1, ma a e b sono nascoste.
+
+
+var apply = function(arguments) {
+	var elemento = arguments[1];
+	var funzione = arguments[0];
+	return funzione(elemento);
+}
+
+
+var aa = function(funzione) {
+	return (function(array) {
+		return array.map(funzione);
+	});
+}
+
+
+var comp2 = function(funzioni) {
+	return (function(x) {
+		return funzioni[0](funzioni[1](x));
+	})
+}
