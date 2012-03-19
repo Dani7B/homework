@@ -55,3 +55,14 @@ var comp = function(funzioni) {
 		return funzione(x);
 	});
 }
+
+
+var cons = function(funzioni) {
+	return function(x) {
+		var result = new Array(funzioni.length);
+		for(var i=0; i<funzioni.length; i++) {
+			result[i] = (funzioni[i](x));
+		}
+		return result;
+	}
+}
