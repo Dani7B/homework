@@ -45,3 +45,13 @@ var comp2 = function(funzioni) {
 		return funzioni[0](funzioni[1](x));
 	});
 }
+
+
+var comp = function(funzioni) {
+	var funzione = funzioni.reduce(function(prev,curr) {
+		return comp2([prev,curr]);
+	});
+	return (function(x) {
+		return funzione(x);
+	});
+}
