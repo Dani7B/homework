@@ -43,5 +43,5 @@ var aa = function(funzione) {
 var comp2 = function(funzioni) {
 	return (function(x) {
 		return funzioni[0](funzioni[1](x));
-	})
+	});
 }
