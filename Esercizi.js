@@ -66,3 +66,32 @@ var cons = function(funzioni) {
 		return result;
 	};
 }
+
+var consMap = function(fns) {
+	return function(x) {
+		return fns.map(function(item) {
+			return item(x);
+		});
+	};
+}
+
+
+var distl = function(arguments) {
+	var lista = arguments[1];
+	var elemento = arguments[0];
+	return lista.map(function(item) {
+		return [elemento,item];
+	});
+}
+
+
+var trans = function(matrix) {
+	var result = [];
+	matrix.forEach(function (row, i) {
+		result[i] = [];
+		row.forEach(function (value, j) {
+			result[i][j] = matrix[j][i] ;
+		})
+	})
+	return result;
+}
