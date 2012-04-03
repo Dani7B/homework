@@ -123,10 +123,10 @@ var topSteelFrames = COLOR([0.2,0.2,0.2])(STRUCT([topPillars,topCeiling]));
 
 var backTopFrames = T([1])([9.91])(S([1])([-1])(topFrames));
 
-var lateralFrames1 = R([2])([Math.PI/2])(T([0,1,2])([3.2,-17.15,7.5])(topFrames));
-var lateralFrames2 = R([2])([Math.PI/2])(T([0,1,2])([3.2,-26.9,7.5])(topFrames));
+var lateralFrames1 = R([2])([Math.PI/2])(T([0,1,2])([2.4,-17.15,7.5])(topFrames));
+var lateralFrames2 = R([2])([Math.PI/2])(T([0,1,2])([2.4,-26.9,7.5])(topFrames));
 
-var attic = T([0,1,2])([17, 3.2 ,7.5])(STRUCT([topSteelFrames,backTopFrames,topFrames]));
+var attic = T([0,1,2])([17, 2.4 ,7.5])(STRUCT([topSteelFrames,backTopFrames,topFrames]));
 
 var building = STRUCT([steelFrames,frames,backFrames,cantileverFrames,cantileverBack]); // per creare un'unica struttura
 
