@@ -32,3 +32,66 @@ var domain = INTERVALS(1)(40);
 var controlpoints = [[-3,6],[-4,2],[-3,-1],[-1,1],[1.5,1.5],[3,4],[5,5],[7,2],[6,-2],[2,-3]]; // ripeto il primo e l'ultimo punto se voglio interpolare anche loro
 var splineCardinal = SPLINE(CUBIC_CARDINAL(domain))(controlpoints);
 DRAW(splineCardinal);
+
+/* Exercise 6 */
+var domain = INTERVALS(1)(40);
+var controlpoints = [[-3,6],[-4,2],[-3,-1],[-1,1],[1.5,1.5],[3,4],[5,5],[7,2],[6,-2],[2,-3]]; // ripeto il primo e l'ultimo punto se voglio interpolare anche loro
+var splineCardinal = SPLINE(CUBIC_UBSPLINE(domain))(controlpoints);
+DRAW(splineCardinal);
+
+/* Exercise 7 */
+var domain = INTERVALS(1)(40);
+var controlpoints = [[-3,6],[-4,2],[-3,-1],[-1,1],[1.5,1.5],[3,4],[5,5],[7,2],[6,-2],[2,-3]]; // ripeto il primo e l'ultimo punto se voglio interpolare anche loro
+var splineCardinal = COLOR([1,0,0])(SPLINE(CUBIC_UBSPLINE(domain))(controlpoints));
+var splineCardinalbis = COLOR([0,0,1])(SPLINE(CUBIC_CARDINAL(domain))(controlpoints));
+var drawPoints = COLOR([0,1,0])(SIMPLICIAL_COMPLEX(controlpoints)([[0],[1],[2],[3],[4],[5],[6],[7],[8],[9]]));
+var splines = STRUCT([splineCardinal,splineCardinalbis,drawPoints]);
+DRAW(splines);
+
+/* Exercise 8 */
+var hermite = function (dati) {
+	var domain = INTERVALS(1)(20);
+	var curveMapping = CUBIC_HERMITE(S0)(dati);
+	var curve = COLOR([0,0,1])(MAP(curveMapping)(domain));
+	var points = COLOR([0,1,0])(SIMPLICIAL_COMPLEX(dati)([[0],[1]]));
+	var line = COLOR([1,0,0])(POLYLINE([dati[0],dati[1]]));
+	var tot = STRUCT([curve,points,line]);
+	DRAW(tot);
+}
+
+var bezier = function (dati) {
+	var domain = INTERVALS(1)(40);
+	var curveMapping = BEZIER(S0)(dati);
+	var curve = COLOR([0,0,1])(MAP(curveMapping)(domain));
+	var list = [];
+	for(i = 0; i < dati.length; i++)
+		list.push([i]);
+	var points = COLOR([0,1,0])(SIMPLICIAL_COMPLEX(dati)(list));
+	var line = COLOR([1,0,0])(POLYLINE(dati));
+	var tot = STRUCT([curve,points,line]);
+	DRAW(tot);
+}
+
+var cubicCardinal = function (dati) {
+	var domain = INTERVALS(1)(40);
+	var splineCardinal = COLOR([0,0,1])(SPLINE(CUBIC_CARDINAL(domain))(dati));
+	var list = [];
+	for(i = 0; i < dati.length; i++)
+		list.push([i]);
+	var points = COLOR([0,1,0])(SIMPLICIAL_COMPLEX(dati)(list));
+	var line = COLOR([1,0,0])(POLYLINE(dati));
+	var tot = STRUCT([splineCardinal,points,line]);
+	DRAW(tot);
+}
+
+var uniformBspline = function (dati) {
+	var domain = INTERVALS(1)(40);
+	var splineCardinal = COLOR([0,0,1])(SPLINE(CUBIC_UBSPLINE(domain))(dati));
+	var list = [];
+	for(i = 0; i < dati.length; i++)
+		list.push([i]);
+	var points = COLOR([0,1,0])(SIMPLICIAL_COMPLEX(dati)(list));
+	var line = COLOR([1,0,0])(POLYLINE(dati));
+	var tot = STRUCT([splineCardinal,points,line]);
+	DRAW(tot);
+}
